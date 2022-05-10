@@ -1,40 +1,28 @@
 import { Box, Button, Card, CardActions, CardContent, Typography } from "@material-ui/core"
-import { nanoid } from 'nanoid'
-import { useState } from 'react'
+import { useContext } from "react"
+import CoursesContext from "../context/CoursesContext"
 
-const courseData = {
-  id: nanoid(),
-  name: 'Math',
-  number: 4044,
-  score: 98,
-}
-
-const coursesData = [
-  {...courseData},
-  {
-    id: nanoid(),
-    name: 'English',
-    number: 202,
-    score: 65
-  },
-  {
-    id: nanoid(),
-    name: 'Science',
-    number: 204,
-    score: 80
-  }
-]
 
 export const Classes = () => {
-  const [courses, setCourses] = useState(coursesData)
+  const { courses, setCourses, handleAddCourse,
+    handleRemoveCourse,
+    handleUpdateCourse } = useContext(CoursesContext)
+
+  // Courses Functionality:
+  // - Add a new course
+  // - Remove a course
+  // - Update a course
+
+  // CRUD with array of objects
+  // Create
+  
 
   return (
     <Box style={{marginTop: 30}}>
       {/* Courses Heading */}
       <Typography variant="h4" component="h3">Courses</Typography>
 
-      {/* 'Add Course' Button */}
-      <Button>Add Course</Button>
+      <Button onClick={handleAddCourse}>Add Course</Button>
 
       {/* List of Courses */}
       <Box style={{marginTop: 20}}>
@@ -47,8 +35,8 @@ export const Classes = () => {
               <Typography>Score: {course.score}</Typography>
             </CardContent>
             <CardActions>
-              <Button>Remove</Button>
-              <Button>Edit</Button>
+              <Button onClick={() => handleRemoveCourse(course.id)}>Remove</Button>
+              <Button onClick={() => handleUpdateCourse(course.id, "NO CLASS")}>Edit</Button>
             </CardActions>
           </Card>
         ))}
