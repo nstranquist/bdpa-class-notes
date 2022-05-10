@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Navbar } from './components/Navbar'
 import { Profile } from './components/Profile'
 import { Container, makeStyles } from '@material-ui/core';
@@ -13,15 +14,18 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles()
+  const [name, setName] = useState('')
+
+  console.log('name:', name)
 
   return (
     <div className={classes.appContainer}>
-      <Navbar />
+      <Navbar name={name} />
 
       {/* Content Section */}
       <Container className={classes.layoutContainer} style={{paddingTop: 12}}>
         {/* Profile */}
-        <Profile />
+        <Profile name={name} setName={setName} />
 
 
         {/* Classes */}

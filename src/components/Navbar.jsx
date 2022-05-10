@@ -10,7 +10,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const Navbar = () => {
+export const Navbar = ({
+  name
+}) => {
   const classes = useStyles();
 
   return (
@@ -21,7 +23,7 @@ export const Navbar = () => {
             {/* <img src={logo} color="#fff" className="App-logo" alt="logo" style={{color:'#fff'}} /> */}
           </div>
           <Typography variant="h6" component="h1" className={classes.title}>Student Classes Tracker</Typography>
-          <Typography variant="h6" component="p">Welcome, guest</Typography>
+          <Typography variant="h6" component="p">Welcome, {name}</Typography>
         </Toolbar>
       </AppBar>
     </div>

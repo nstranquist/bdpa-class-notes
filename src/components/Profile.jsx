@@ -1,10 +1,18 @@
-import { Box } from "@material-ui/core"
+import { Box, TextField, Typography } from "@material-ui/core"
 
-export const Profile = () => {
+export const Profile = ({
+  name,
+  setName
+}) => {
+
+  const handleChange = (e) => {
+    setName(e.target.value)
+  }
 
   return (
     <Box>
-      Profile
+      <Typography variant="h5" component="h2">Profile</Typography>
+      <TextField value={name} onChange={(e) => handleChange(e)} fullWidth margin="normal" placeholder="Enter your name" />
     </Box>
   )
 }
