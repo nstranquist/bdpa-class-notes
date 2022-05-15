@@ -1,5 +1,6 @@
 import { Button, TextField } from "@material-ui/core"
 import { useState } from 'react'
+import { useCourses } from "../context/CoursesContext"
 
 const emptyCourse = {
   name: '',
@@ -7,10 +8,9 @@ const emptyCourse = {
   score: 100
 }
 
-export const CourseForm = ({
-  onSubmit
-}) => {
+export const CourseForm = () => {
   const [formData, setFormData] = useState(emptyCourse)
+  const { handleAddCourse } = useCourses()
 
   const handleChange = (e) => {
     // e.target.name
@@ -23,7 +23,7 @@ export const CourseForm = ({
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    onSubmit(formData)
+    // onSubmit(formData)
   }
 
   return (

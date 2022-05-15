@@ -1,21 +1,9 @@
 import { Box, Button, Card, CardActions, CardContent, Typography } from "@material-ui/core"
-import { useContext } from "react"
-import CoursesContext from "../context/CoursesContext"
+import { useCourses } from "../context/CoursesContext"
 
 
 export const Classes = () => {
-  const { courses, setCourses, handleAddCourse,
-    handleRemoveCourse,
-    handleUpdateCourse } = useContext(CoursesContext)
-
-  // Courses Functionality:
-  // - Add a new course
-  // - Remove a course
-  // - Update a course
-
-  // CRUD with array of objects
-  // Create
-  
+  const { courses, handleAddCourse, handleRemoveCourse, handleUpdateCourse } = useCourses()
 
   return (
     <Box style={{marginTop: 30}}>
